@@ -1,0 +1,10 @@
+#format 1
+task Hello {
+    "Hi ChilledOut"
+}
+
+#format2
+task -name "Hello" -action {
+    "Hello World"
+}
+
