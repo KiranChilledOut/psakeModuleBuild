@@ -1,9 +1,35 @@
-task default -depends A
+Task default -Depends Test
 
-Task A -Depends B {
-    Write-Host "Task A"
+TaskSetup {
+    Write-Host "Running Setup"
 }
 
-Task B {
-    Write-Host "Task B"
+TaskTearDown {
+    Write-Host "Running TearDown"
 }
+
+BuildSetup {
+    Write-Host "Build Setup"
+}
+
+BuildTearDown {
+    Write-Host "Build TearDown"
+}
+
+FormatTaskName {
+    param($taskName)
+    Write-Host "Executing Task formatting: $taskName" -ForegroundColor blue
+}
+
+
+Task Test -Depends Compile, Clean {
+   "This is a test"
+ }
+
+Task Compile -Depends Clean {
+   "Compile"
+ }
+
+Task Clean {
+   "Clean"
+ }
